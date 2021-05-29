@@ -1,5 +1,1 @@
-# juiciosfronend
-# juiciosfrontend
-# juiciosfrontend
-# juiciosfrontend
-# juiciosfrontend
+Front integramente en php
