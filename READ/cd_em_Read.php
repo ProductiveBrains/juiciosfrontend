@@ -105,7 +105,7 @@
         const parametros = JSON.stringify({
             id: send_ID
         })
-        fetch('http://sotano.digital/utjuicios/DB/CD_EM_CUIL/' + parametros + '')
+        fetch('https://ut.sotano.digital/utjuicios/DB/CD_EM_CUIL/' + parametros + '')
             .then(res => res.json())
             .then(json => {
                 console.log(json);
@@ -120,16 +120,16 @@
                 console.log(json[0].LINK2);
 
                 $("#id_CD_EM_Read_DataBase").val(json[0].ID);
-                // $("#id_CD_EM_Read_FechaSistema").val(FechaConvertString(fecha1 = new Date(json[0].FECHAING)));
-                // $("#id_CD_EM_Read_FechaEmision").val(FechaConvertString(fecha2 = new Date(json[0].FECHADOC)));
-                $("#id_CD_EM_Read_FechaSistema").val(json[0].FECHAING);
-                $("#id_CD_EM_Read_FechaEmision").val(json[0].FECHADOC);
+                $("#id_CD_EM_Read_FechaSistema").val(FechaConvertString(fecha1 = new Date(json[0].FECHAING)));
+                $("#id_CD_EM_Read_FechaEmision").val(FechaConvertString(fecha2 = new Date(json[0].FECHADOC)));
+                // $("#id_CD_EM_Read_FechaSistema").val(json[0].FECHAING);
+                // $("#id_CD_EM_Read_FechaEmision").val(json[0].FECHADOC);
                 $("#id_CD_EM_Read_TipoReclamo").val(json[0].RECLAMO);
                 $("#id_CD_EM_Read_EstudioJuridico").val(json[0].ESTUDIO);
                 $("#id_CD_EM_Read_Comentario").val(json[0].COMENTARIO);
                 $("#id_CD_EM_Read_Cartellone").val(json[0].LINK1);
                 
-                const RutaPDF="http://sotano.digital/utpdf/"+json[0].LINK2;
+                const RutaPDF="https://ut.sotano.digital/utpdf/"+json[0].LINK2;
                 PDFObject.embed(RutaPDF, "#PDF_CONTESTACIONES_READ", { pdfOpenParams: { view: 'Fit' } });
                 
             })

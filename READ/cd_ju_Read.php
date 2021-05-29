@@ -33,8 +33,6 @@
                                         <label for="idFechaEmision_JU_READ">Fecha Emision</label>
                                         <input id="idFechaEmision_JU_READ" name="idFechaEmision_JU_READ" type="text"
                                             class="form-control " disabled>
-                                        <input type="text" class=" form-control" name="idnamecuil_JU_READ"
-                                            id="idnamecuil_JU_READ" hidden>
                                     </div>
                                 </div>
 
@@ -101,14 +99,6 @@
                                                     onclick="fullscreenFUNCTION(document.getElementById('PDF_JUICIO_READ'))">Vista
                                                     Maximizada &nbsp</span>
                                             </div>
-                                            <!-- <div class="card-content" style="margin-top:10px;">
-                                                <div class="">
-                                                    <input type="file"
-                                                        onchange="file_changed_PDFViewer('PDF_JUICIO_READ')"
-                                                        name="archivoupload" id="id_file_pdf_JU_READ" accept=".pdf,.jpg"
-                                                        class=""disabled >
-                                                </div>
-                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -141,7 +131,7 @@
         const parametros = JSON.stringify({
             id: send_ID
         })
-        fetch('http://sotano.digital/utjuicios/DB/JU_CUIL/' + parametros + '')
+        fetch('https://ut.sotano.digital/utjuicios/DB/JU_CUIL/' + parametros + '')
             .then(res => res.json())
             .then(json => {
                 console.log(json);
@@ -157,20 +147,15 @@
                 console.log(json[0].LINK2);
 
                 $("#idDataBase_JU_READ").val(json[0].ID);
-                // $("#idFechaSistema_JU_READ").val(FechaConvertString(fecha1 = new Date(json[0].FECHAING)));
-                // $("#idFechaEmision_JU_READ").val(FechaConvertString(fecha2 = new Date(json[0].FECHADOC)));
-                $("#idFechaSistema_JU_READ").val(json[0].FECHAING);
-                $("#idFechaEmision_JU_READ").val(json[0].FECHADOC);
+                $("#idFechaSistema_JU_READ").val(FechaConvertString(fecha1 = new Date(json[0].FECHAING)));
+                $("#idFechaEmision_JU_READ").val(FechaConvertString(fecha2 = new Date(json[0].FECHADOC)));
                 $("#idTipo_JU_READ option:selected" ).text(json[0].TIPO);
-                // $("#idFechaAudiencia_JU_READ").val(json[0].FECHAAUDI );
-                // $("#idFechaAudiencia_JU_READ").val(FechaConvertString(fecha3 = new Date(json[0].FECHAAUDI)));
-                $("#idFechaAudiencia_JU_READ").val(json[0].FECHAJUI);
-                // $("#hora").val(json[0].HORAAUDI  );
-                $("#hora" ).val(json[0].HORAJUI);
+                $("#idFechaAudiencia_JU_READ").val(FechaConvertString(fecha3 = new Date(json[0].FECHAJUI)));
+                $("#hora").val(json[0].HORAJUI  );
                 $("#idComentario_JU_READ").val(json[0].COMENTARIO);
                 $("#idCartellone_JU_READ").val(json[0].LINK1);
 
-                const RutaPDF = "http://sotano.digital/utpdf/" + json[0].LINK2;
+                const RutaPDF = "https://ut.sotano.digital/utpdf/" + json[0].LINK2;
                 PDFObject.embed(RutaPDF, "#PDF_JUICIO_READ", {
                     pdfOpenParams: {
                         view: 'Fit'

@@ -73,7 +73,7 @@
                                 <button type="submit" class="btn btn-primary btn-block">Iniciar Sesion</button>
                             </div>
                             <div class="col-12 mt-1">
-                                <a href="http://sotano.digital/intranet/" class="btn btn-danger btn-block">Volver a Intranet</a>
+                                <a href="https://ut.sotano.digital/intranet/" class="btn btn-danger btn-block">Volver a Intranet</a>
                             </div>
                         </div>
                 </form>

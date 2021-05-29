@@ -173,7 +173,7 @@
             if (result.isConfirmed) {
 
                 $.ajax({
-                    url: `http://sotano.digital/utjuicios/DB/Update_Judiciales`,
+                    url: `https://ut.sotano.digital/utjuicios/DB/Update_Judiciales`,
                     type: "POST",
                     datatype: "json",
                     async: true,

@@ -32,8 +32,6 @@
                                         <label for="idFechaEmision_JU_CRE">Fecha Emision</label>
                                         <input id="idFechaEmision_JU_CRE" name="idFechaEmision_JU_CRE" type="date"
                                             class="form-control validate" required="" aria-required="true">
-                                        <input type="text" class=" form-control" name="idnamecuil_JU_CRE"
-                                            id="idnamecuil_JU_CRE" hidden>
                                     </div>
                                 </div>
 
@@ -267,7 +265,7 @@
             $.ajax({
                 type: "POST",
                 enctype: 'multipart/form-data',
-                url: "http://sotano.digital/utjuicios/UPFILE/CD_JU", //CREAR CONTROLADOR
+                url: "https://ut.sotano.digital/utjuicios/UPFILE/CD_JU", //CREAR CONTROLADOR
                 data: data,
                 processData: false,
                 contentType: false,

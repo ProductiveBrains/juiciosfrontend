@@ -32,8 +32,6 @@
                                         <label for="idFechaEmision_AU_CRE">Fecha Emision</label>
                                         <input id="idFechaEmision_AU_CRE" name="idFechaEmision_AU_CRE" type="date"
                                             class="form-control validate" required="" aria-required="true">
-                                        <input type="text" class=" form-control" name="idnamecuil_AU_CRE"
-                                            id="idnamecuil_AU_CRE" hidden>
                                     </div>
                                 </div>
 
@@ -61,7 +59,7 @@
                                     <div class="form-group col-md-3">
                                         <i class="material-icons prefix text-warning">mode_edit</i>
                                         <label for="idComentario_AU_lugar">Hora </label>
-                                        <input id="timepicker" id="hora" name="hora" class="form-control validate" required="" aria-required="true" />
+                                        <input id="timepickerau_cre" id="idhoraau" name="hora" class="form-control validate" required="" aria-required="true" />
                                         
                                     </div>
                                     
@@ -133,7 +131,7 @@
 </div>
 
 <script>
-    $('#timepicker').timepicker({
+    $('#timepickerau_cre').timepicker({
         uiLibrary: 'bootstrap4'
     });
 </script>
@@ -260,14 +258,14 @@
             data.append("idFechaEmision_AU_CRE", $("#idFechaEmision_AU_CRE").val());
             data.append("idTipo_AU_CRE", $("#idTipo_AU_CRE option:selected" ).text()); 
             data.append("idFechaAudiencia_AU_CRE", $("#idFechaAudiencia_AU_CRE").val());
-            data.append("hora_AU_CRE", $("#hora option:selected" ).text());         
+            data.append("hora_AU_CRE", $("#idhoraau option:selected" ).text());         
             data.append("idComentario_AU_CRE", $("#idComentario_AU_CRE").val());
             data.append("idCartellone_AU_CRE", $("#idCartellone_AU_CRE").val());
 
             $.ajax({
                 type: "POST",
                 enctype: 'multipart/form-data',
-                url: "http://sotano.digital/utjuicios/UPFILE/CD_AU", //CREAR CONTROLADOR
+                url: "https://ut.sotano.digital/utjuicios/UPFILE/CD_AU", //CREAR CONTROLADOR
                 data: data,
                 processData: false,
                 contentType: false,

@@ -239,7 +239,7 @@
             $.ajax({
                 type: "POST",
                 enctype: 'multipart/form-data',
-                url: "http://sotano.digital/utjuicios/UPFILE/CD_EM",
+                url: "https://ut.sotano.digital/utjuicios/UPFILE/CD_EM",
                 data: data,
                 processData: false,
                 contentType: false,

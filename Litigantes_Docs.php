@@ -247,6 +247,7 @@
                     "serverSide": true,
                     async: true
                 },
+                "order": [4,'asc'],
                 "autoWidth": false,
                 columnDefs: [ {
                         bSortable: false,
@@ -313,15 +314,11 @@
                     [10, 20, 50, 'Todos']
                 ],
                 // "pagingType": "full_numbers",
-                "dom": "<'row'<'col-md-6'B><'col-md-6 text-right'l>>" +
-                    "<'row'<'col-md-9 text-left'i><'col-md-3'f>>" +
-                    "<'row'<'col-md-12't>>" +
-                    "<'row'<'col-md-12 text-left'p>>",
-                buttons: [{
-                        extend: 'copy',
-                        text: ' <i class="material-icons text-white align-middle">scanner</i> Copiar al Portapapeles',
-                        titleAttr: 'Mantene la copia copia de registro en memoria, y pegado donde se te raje',
-                    },
+                "dom": "<'row'<'col-md-12 text-left'f>>" +
+                "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
+                "<'row'<'col-md-12'i>>" +
+                "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
+                buttons: [
                     {
                         extend: 'excel',
                         text: ' <i class="fas fa-file-excel  text-success align-middle"></i> Excel',
@@ -337,25 +334,7 @@
                         extend: 'pdfHtml5',
                         text: ' <i class="far fa-file-pdf text-danger align-middle"></i> PDF',
                         titleAttr: 'Abre en una nueva Pestaña el PDF del filtrado realizado',
-                    },
-                    {
-                        extend: 'csv',
-                        text: '<i class="fas fa-file-csv text-warning  align-middle"></i> CSV',
-                        titleAttr: 'Exporte a Valores separados por Comas',
-                    },
-                    {
-                        text: 'JSON',
-                        text: '<i class="fab fa-node-js text-warning align-middle"></i> Json',
-                        action: function(e, dt, button, config) {
-                            var data = dt.buttons.exportData();
-
-                            $.fn.dataTable.fileSave(
-                                new Blob([JSON.stringify(data)]),
-                                'Export.json'
-                            );
-                        },
-                        titleAttr: 'Exporte a Formato Json',
-                    },
+                    }
                 ],
                 "language": {
                     "url": "/json/lenguajedatatables.json"
@@ -370,20 +349,11 @@
                     "serverSide": true,
                     async: true
                 },
+                "order": [4,'asc'],
                 "autoWidth": false,
-                columnDefs: [{
-                        targets: 3,
-                        render: function(data) {
-                            return moment(data).format('L');
-                        },
-                    }, {
-                        targets: 4,
-                        render: function(data) {
-                            return moment(data).format('L');
-                        }
-                    }, {
+                columnDefs: [ {
                         bSortable: false,
-                        targets: [0, 1, 2, 3, 4, 5, 6]
+                        targets: [ 1, 2, 5, 6]
                     },
                     {
                         "width": "30px",
@@ -446,15 +416,11 @@
                     [10, 20, 50, 'Todos']
                 ],
                 // "pagingType": "full_numbers",
-                "dom": "<'row'<'col-md-6'B><'col-md-6 text-right'l>>" +
-                    "<'row'<'col-md-9 text-left'i><'col-md-3'f>>" +
-                    "<'row'<'col-md-12't>>" +
-                    "<'row'<'col-md-12 text-left'p>>",
-                buttons: [{
-                        extend: 'copy',
-                        text: ' <i class="material-icons text-white align-middle">scanner</i> Copiar al Portapapeles',
-                        titleAttr: 'Mantene la copia copia de registro en memoria, y pegado donde se te raje',
-                    },
+                "dom": "<'row'<'col-md-12 text-left'f>>" +
+                "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
+                "<'row'<'col-md-12'i>>" +
+                "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
+                buttons: [
                     {
                         extend: 'excel',
                         text: ' <i class="fas fa-file-excel  text-success align-middle"></i> Excel',
@@ -470,25 +436,7 @@
                         extend: 'pdfHtml5',
                         text: ' <i class="far fa-file-pdf text-danger align-middle"></i> PDF',
                         titleAttr: 'Abre en una nueva Pestaña el PDF del filtrado realizado',
-                    },
-                    {
-                        extend: 'csv',
-                        text: '<i class="fas fa-file-csv text-warning  align-middle"></i> CSV',
-                        titleAttr: 'Exporte a Valores separados por Comas',
-                    },
-                    {
-                        text: 'JSON',
-                        text: '<i class="fab fa-node-js text-warning align-middle"></i> Json',
-                        action: function(e, dt, button, config) {
-                            var data = dt.buttons.exportData();
-
-                            $.fn.dataTable.fileSave(
-                                new Blob([JSON.stringify(data)]),
-                                'Export.json'
-                            );
-                        },
-                        titleAttr: 'Exporte a Formato Json',
-                    },
+                    }
                 ],
                 "language": {
                     "url": "/json/lenguajedatatables.json"
@@ -503,26 +451,11 @@
                     "serverSide": true,
                     async: true
                 },
+                "order": [6,'asc'],
                 "autoWidth": false,
-                columnDefs: [{
-                        targets: 3,
-                        render: function(data) {
-                            return moment(data).format('L');
-                        },
-                    }, {
-                        targets: 4,
-                        render: function(data) {
-                            return moment(data).format('L');
-                        }
-                    },
-                    {
-                        targets: 6,
-                        render: function(data) {
-                            return moment(data).format('L');
-                        }
-                    }, {
+                columnDefs: [ {
                         bSortable: false,
-                        targets: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+                        targets: [0, 1, 2, 7, 8]
                     },
                     {
                         "width": "30px",
@@ -599,15 +532,11 @@
                     [10, 20, 50, 'Todos']
                 ],
                 // "pagingType": "full_numbers",
-                "dom": "<'row'<'col-md-6'B><'col-md-6 text-right'l>>" +
-                    "<'row'<'col-md-9 text-left'i><'col-md-3'f>>" +
-                    "<'row'<'col-md-12't>>" +
-                    "<'row'<'col-md-12 text-left'p>>",
-                buttons: [{
-                        extend: 'copy',
-                        text: ' <i class="material-icons text-white align-middle">scanner</i> Copiar al Portapapeles',
-                        titleAttr: 'Mantene la copia copia de registro en memoria, y pegado donde se te raje',
-                    },
+                "dom": "<'row'<'col-md-12 text-left'f>>" +
+                "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
+                "<'row'<'col-md-12'i>>" +
+                "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
+                buttons: [
                     {
                         extend: 'excel',
                         text: ' <i class="fas fa-file-excel  text-success align-middle"></i> Excel',
@@ -623,25 +552,7 @@
                         extend: 'pdfHtml5',
                         text: ' <i class="far fa-file-pdf text-danger align-middle"></i> PDF',
                         titleAttr: 'Abre en una nueva Pestaña el PDF del filtrado realizado',
-                    },
-                    {
-                        extend: 'csv',
-                        text: '<i class="fas fa-file-csv text-warning  align-middle"></i> CSV',
-                        titleAttr: 'Exporte a Valores separados por Comas',
-                    },
-                    {
-                        text: 'JSON',
-                        text: '<i class="fab fa-node-js text-warning align-middle"></i> Json',
-                        action: function(e, dt, button, config) {
-                            var data = dt.buttons.exportData();
-
-                            $.fn.dataTable.fileSave(
-                                new Blob([JSON.stringify(data)]),
-                                'Export.json'
-                            );
-                        },
-                        titleAttr: 'Exporte a Formato Json',
-                    },
+                    }
                 ],
                 "language": {
                     "url": "/json/lenguajedatatables.json"
@@ -657,25 +568,11 @@
                     async: true
                 },
                 "autoWidth": false,
-                columnDefs: [{
-                        targets: 3,
-                        render: function(data) {
-                            return moment(data).format('L');
-                        },
-                    }, {
-                        targets: 4,
-                        render: function(data) {
-                            return moment(data).format('L');
-                        }
-                    },
-                    {
-                        targets: 6,
-                        render: function(data) {
-                            return moment(data).format('L');
-                        }
-                    }, {
+                "order": [6,'asc'],
+                "autoWidth": false,
+                columnDefs: [ {
                         bSortable: false,
-                        targets: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+                        targets: [0, 1, 2, 5, 7, 8]
                     },
                     {
                         "width": "30px",
@@ -752,15 +649,11 @@
                     [10, 20, 50, 'Todos']
                 ],
                 // "pagingType": "full_numbers",
-                "dom": "<'row'<'col-md-6'B><'col-md-6 text-right'l>>" +
-                    "<'row'<'col-md-9 text-left'i><'col-md-3'f>>" +
-                    "<'row'<'col-md-12't>>" +
-                    "<'row'<'col-md-12 text-left'p>>",
-                buttons: [{
-                        extend: 'copy',
-                        text: ' <i class="material-icons text-white align-middle">scanner</i> Copiar al Portapapeles',
-                        titleAttr: 'Mantene la copia copia de registro en memoria, y pegado donde se te raje',
-                    },
+                "dom": "<'row'<'col-md-12 text-left'f>>" +
+                "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
+                "<'row'<'col-md-12'i>>" +
+                "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
+                buttons: [
                     {
                         extend: 'excel',
                         text: ' <i class="fas fa-file-excel  text-success align-middle"></i> Excel',
@@ -776,25 +669,7 @@
                         extend: 'pdfHtml5',
                         text: ' <i class="far fa-file-pdf text-danger align-middle"></i> PDF',
                         titleAttr: 'Abre en una nueva Pestaña el PDF del filtrado realizado',
-                    },
-                    {
-                        extend: 'csv',
-                        text: '<i class="fas fa-file-csv text-warning  align-middle"></i> CSV',
-                        titleAttr: 'Exporte a Valores separados por Comas',
-                    },
-                    {
-                        text: 'JSON',
-                        text: '<i class="fab fa-node-js text-warning align-middle"></i> Json',
-                        action: function(e, dt, button, config) {
-                            var data = dt.buttons.exportData();
-
-                            $.fn.dataTable.fileSave(
-                                new Blob([JSON.stringify(data)]),
-                                'Export.json'
-                            );
-                        },
-                        titleAttr: 'Exporte a Formato Json',
-                    },
+                    }
                 ],
                 "language": {
                     "url": "/json/lenguajedatatables.json"

@@ -106,7 +106,7 @@
         const parametros = JSON.stringify({
             id: send_ID
         })
-        fetch('http://sotano.digital/utjuicios/DB/CD_RE_CUIL/' + parametros + '')
+        fetch('https://ut.sotano.digital/utjuicios/DB/CD_RE_CUIL/' + parametros + '')
             .then(res => res.json())
             .then(json => {
                 console.log(json);
@@ -122,10 +122,10 @@
                 // alert(json[0].ESTUDIO);
 
                 $("#id_Read_DataBase").val(json[0].ID);
-                // $("#id_Read_FechaSistema").val(FechaConvertString(fecha1 = new Date(json[0].FECHAING)));
-                // $("#id_Read_FechaEmision").val(FechaConvertString(fecha2 = new Date(json[0].FECHADOC)));
-                $("#id_Read_FechaSistema").val(json[0].FECHAING);
-                $("#id_Read_FechaEmision").val(json[0].FECHADOC);
+                $("#id_Read_FechaSistema").val(FechaConvertString(fecha1 = new Date(json[0].FECHAING)));
+                $("#id_Read_FechaEmision").val(FechaConvertString(fecha2 = new Date(json[0].FECHADOC)));
+                // $("#id_Read_FechaSistema").val(json[0].FECHAING);
+                // $("#id_Read_FechaEmision").val(json[0].FECHADOC);
                 $("#id_Read_TipoReclamo").val(json[0].RECLAMO);
                 $("#id_Read_EstudioJuridico").val(json[0].ESTUDIO);
                 $("#id_Read_Comentario").val(json[0].COMENTARIO);
@@ -133,7 +133,7 @@
 
                 
                 
-                const RutaPDF="http://sotano.digital/utpdf/"+json[0].LINK2;
+                const RutaPDF="https://ut.sotano.digital/utpdf/"+json[0].LINK2;
                 PDFObject.embed(RutaPDF, "#PDF_RECIBIDAS_READ", { pdfOpenParams: { view: 'Fit' } });
                 
             })

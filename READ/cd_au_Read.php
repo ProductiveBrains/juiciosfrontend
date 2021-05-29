@@ -33,8 +33,6 @@
                                         <label for="idFechaEmision_AU_READ">Fecha Emision</label>
                                         <input id="idFechaEmision_AU_READ" name="idFechaEmision_AU_READ" type="text"
                                             class="form-control " disabled>
-                                        <input type="text" class=" form-control" name="idnamecuil_AU_READ"
-                                            id="idnamecuil_AU_READ" hidden>
                                     </div>
                                 </div>
 
@@ -62,7 +60,7 @@
                                     <div class="form-group col-md-3">
                                         <i class="material-icons prefix text-warning">mode_edit</i>
                                         <label for="hora">Hora </label>
-                                        <input id="hora"  name="hora" type="text" class="form-control " disabled />
+                                        <input id="idhoraau_re"  name="hora" type="text" class="form-control " disabled />
 
                                     </div>
 
@@ -101,14 +99,6 @@
                                                     onclick="fullscreenFUNCTION(document.getElementById('PDF_AUDIENCIA_READ'))">Vista
                                                     Maximizada &nbsp</span>
                                             </div>
-                                            <!-- <div class="card-content" style="margin-top:10px;">
-                                                <div class="">
-                                                    <input type="file"
-                                                        onchange="file_changed_PDFViewer('PDF_AUDIENCIA_READ')"
-                                                        name="archivoupload" id="id_file_pdf_AU_READ" accept=".pdf,.jpg"
-                                                        class=""disabled >
-                                                </div>
-                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -141,7 +131,7 @@
         const parametros = JSON.stringify({
             id: send_ID
         })
-        fetch('http://sotano.digital/utjuicios/DB/AU_CUIL/' + parametros + '')
+        fetch('https://ut.sotano.digital/utjuicios/DB/AU_CUIL/' + parametros + '')
             .then(res => res.json())
             .then(json => {
                 console.log(json);
@@ -157,20 +147,15 @@
                 console.log(json[0].LINK2);
 
                 $("#idDataBase_AU_READ").val(json[0].ID);
-                // $("#idFechaSistema_AU_READ").val(FechaConvertString(fecha1 = new Date(json[0].FECHAING)));
-                // $("#idFechaEmision_AU_READ").val(FechaConvertString(fecha2 = new Date(json[0].FECHADOC)));
-                $("#idFechaSistema_AU_READ").val(json[0].FECHAING);
-                $("#idFechaEmision_AU_READ").val(json[0].FECHADOC);
+                $("#idFechaSistema_AU_READ").val(FechaConvertString(fecha1 = new Date(json[0].FECHAING)));
+                $("#idFechaEmision_AU_READ").val(FechaConvertString(fecha2 = new Date(json[0].FECHADOC)));
                 $("#idTipo_AU_READ option:selected" ).text(json[0].TIPO);
-                // $("#idFechaAudiencia_AU_READ").val(json[0].FECHAAUDI );
-                // $("#idFechaAudiencia_AU_READ").val(FechaConvertString(fecha3 = new Date(json[0].FECHAAUDI)));
-                $("#idFechaAudiencia_AU_READ").val(json[0].FECHAAUDI);
-                // $("#hora").val(json[0].HORAAUDI  );
-                $("#hora" ).val(json[0].HORAAUDI);
+                $("#idFechaAudiencia_AU_READ").val(FechaConvertString(fecha3 = new Date(json[0].FECHAAUDI)));
+                $("#idhoraau_re" ).val(json[0].HORAAUDI);
                 $("#idComentario_AU_READ").val(json[0].COMENTARIO);
                 $("#idCartellone_AU_READ").val(json[0].LINK1);
 
-                const RutaPDF = "http://sotano.digital/utpdf/" + json[0].LINK2;
+                const RutaPDF = "https://ut.sotano.digital/utpdf/" + json[0].LINK2;
                 PDFObject.embed(RutaPDF, "#PDF_AUDIENCIA_READ", {
                     pdfOpenParams: {
                         view: 'Fit'
