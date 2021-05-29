@@ -24,6 +24,7 @@ function AsignarFechaActual_id(idfecha) {
     });
 
 }
+
 function GetTodayDate() {
     var tdate = new Date();
     var dd = tdate.getDate(); //yields day
@@ -32,16 +33,17 @@ function GetTodayDate() {
     var currentDate = yyyy + "-" + (MM + 1) + "-" + dd;
     return currentDate;
 };
+
 function GetTodayDateV2() {
     const SistemaFecha = new Date();
-    var diaactual="";
-    var mesactual="";
-    var anioactual= SistemaFecha.getFullYear();
-    if (SistemaFecha.getDate().toString().length < 2){
-        diaactual =  "0" + (SistemaFecha.getDate());
-    }else{diaactual =  SistemaFecha.getDate();}
-    if (SistemaFecha.getMonth().toString().length < 2){
-        mesactual =  "0" + (SistemaFecha.getMonth()+1);
+    var diaactual = "";
+    var mesactual = "";
+    var anioactual = SistemaFecha.getFullYear();
+    if (SistemaFecha.getDate().toString().length < 2) {
+        diaactual = "0" + (SistemaFecha.getDate());
+    } else { diaactual = SistemaFecha.getDate(); }
+    if (SistemaFecha.getMonth().toString().length < 2) {
+        mesactual = "0" + (SistemaFecha.getMonth() + 1);
     }
     fechafinal = diaactual + '-' + mesactual + '-' + anioactual;
     return fechafinal;
@@ -49,30 +51,31 @@ function GetTodayDateV2() {
 
 function FechaConvert(fecha) {
     var SistemaFecha = new Date();
-    SistemaFecha=fecha;
-    var diaactual="";
-    var mesactual="";
-    var anioactual= SistemaFecha.getFullYear();
-    if (SistemaFecha.getDate().toString().length < 2){
-        diaactual =  "0" + (SistemaFecha.getDate());
-    }else{diaactual =  SistemaFecha.getDate();}
-    if (SistemaFecha.getMonth().toString().length < 2){
-        mesactual =  "0" + (SistemaFecha.getMonth()+1);
+    SistemaFecha = fecha;
+    var diaactual = "";
+    var mesactual = "";
+    var anioactual = SistemaFecha.getFullYear();
+    if (SistemaFecha.getDate().toString().length < 2) {
+        diaactual = "0" + (SistemaFecha.getDate());
+    } else { diaactual = SistemaFecha.getDate(); }
+    if (SistemaFecha.getMonth().toString().length < 2) {
+        mesactual = "0" + (SistemaFecha.getMonth() + 1);
     }
     fechafinal = diaactual + '-' + mesactual + '-' + anioactual;
     return fechafinal;
 };
+
 function FechaConvertString(fecha) {
     var SistemaFecha = new Date();
-    SistemaFecha=fecha;
-    var diaactual="";
-    var mesactual="";
-    var anioactual= SistemaFecha.getFullYear();
-    if (SistemaFecha.getDate().toString().length < 2){
-        diaactual =  "0" + (SistemaFecha.getDate());
-    }else{diaactual =  SistemaFecha.getDate();}
-    if (SistemaFecha.getMonth().toString().length < 2){
-        mesactual =  "0" + (SistemaFecha.getMonth()+1);
+    SistemaFecha = fecha;
+    var diaactual = "";
+    var mesactual = "";
+    var anioactual = SistemaFecha.getFullYear();
+    if (SistemaFecha.getDate().toString().length < 2) {
+        diaactual = "0" + (SistemaFecha.getDate());
+    } else { diaactual = SistemaFecha.getDate(); }
+    if (SistemaFecha.getMonth().toString().length < 2) {
+        mesactual = "0" + (SistemaFecha.getMonth() + 1);
     }
     fechafinal = diaactual + '/' + mesactual + '/' + anioactual;
     return fechafinal;
@@ -80,34 +83,35 @@ function FechaConvertString(fecha) {
 
 function GetTodayDateV3() {
     const SistemaFecha = new Date();
-    var diaactual="";
-    var mesactual="";
-    var anioactual= SistemaFecha.getFullYear();
-    if (SistemaFecha.getDate().toString().length < 2){
-        diaactual =  "0" + (SistemaFecha.getDate());
-    }else{diaactual =  SistemaFecha.getDate();}
-    if (SistemaFecha.getMonth().toString().length < 2){
-        mesactual =  "0" + (SistemaFecha.getMonth()+1);
+    var diaactual = "";
+    var mesactual = "";
+    var anioactual = SistemaFecha.getFullYear();
+    if (SistemaFecha.getDate().toString().length < 2) {
+        diaactual = "0" + (SistemaFecha.getDate());
+    } else { diaactual = SistemaFecha.getDate(); }
+    if (SistemaFecha.getMonth().toString().length < 2) {
+        mesactual = "0" + (SistemaFecha.getMonth() + 1);
     }
-    fechafinal2 = anioactual  + '-' + mesactual + '-' + diaactual;
+    fechafinal2 = anioactual + '-' + mesactual + '-' + diaactual;
     return fechafinal2;
 };
 
 function ConviertoFechaaInput(fecha) {
     var SistemaFecha = new Date();
-    SistemaFecha=fecha;
-    var diaactual="";
-    var mesactual="";
-    var anioactual= SistemaFecha.getFullYear();
-    if (SistemaFecha.getDate().toString().length < 2){
-        diaactual =  "0" + (SistemaFecha.getDate());
-    }else{diaactual =  SistemaFecha.getDate();}
-    if (SistemaFecha.getMonth().toString().length < 2){
-        mesactual =  "0" + (SistemaFecha.getMonth()+1);
+    SistemaFecha = fecha;
+    var diaactual = "";
+    var mesactual = "";
+    var anioactual = SistemaFecha.getFullYear();
+    if (SistemaFecha.getDate().toString().length < 2) {
+        diaactual = "0" + (SistemaFecha.getDate());
+    } else { diaactual = SistemaFecha.getDate(); }
+    if (SistemaFecha.getMonth().toString().length < 2) {
+        mesactual = "0" + (SistemaFecha.getMonth() + 1);
     }
-    fechafinal2 = anioactual  + '-' + mesactual + '-' + diaactual;
+    fechafinal2 = anioactual + '-' + mesactual + '-' + diaactual;
     return fechafinal2;
 };
+
 function InicializoFechas_id(idfecha) {
     $(`#${idfecha}`).datepicker({
         firstDay: true,
@@ -134,6 +138,39 @@ function InicializoFechas_id(idfecha) {
     });
 }
 
-function InicializoHora_id(idhora){
+function InicializoHora_id(idhora) {
     $(`#${idhora}`).timepicker();
+}
+
+function fechaHoy() {
+    var tdate = new Date();
+    var dd = tdate.getDate(); //yields day
+    var MM = tdate.getMonth(); //yields month
+    var yyyy = tdate.getFullYear(); //yields year
+    var fechaactual_date = new Date(yyyy + ", " + (MM + 1) + ", " + dd);
+    return fechaactual_date.getTime();
+};
+
+function conviertoFecha(fecha) {
+    var ordenado = fecha.split("/");
+    var fechaconvertida = new Date(ordenado[2] + ', ' + ordenado[1] + ', ' + ordenado[0]);
+    return fechaconvertida.getTime();
+};
+
+function advertencia(dias, fechadoc) {
+    fechadoc = conviertoFecha(fechadoc)
+    undiautc = 86400000;
+    advertenciautc = dias * undiautc;
+    fechaadvertencia = advertenciautc + fechaHoy();
+    cssdata = [];
+
+    if (fechaHoy() > fechadoc || fechaHoy() === fechadoc) {
+        cssdata = ["RED", "YELLOW"];
+    } else if (fechadoc > fechaHoy() && fechadoc > fechaadvertencia) {
+        cssdata = ["LIGHTGREEN", "BLACK"];
+
+    } else if (fechadoc > fechaHoy() && fechadoc <= fechaadvertencia) {
+        cssdata = ["ORANGE", "BLACK"];
+    }
+    return cssdata;
 }

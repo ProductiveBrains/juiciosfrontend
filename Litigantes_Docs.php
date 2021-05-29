@@ -27,6 +27,14 @@
     <?php include("UPDATE/cd_ju_Update") ?>
 
 
+    <style>
+        .fechavencimiento {
+            background-color: lightseagreen;
+            color: #fff;
+        }
+    </style>
+
+
 
 
     <!-- DATATABLES -->
@@ -77,7 +85,7 @@
                                         <th>Opciones</th>
                                         <th>CUIL</th>
                                         <th>Fecha Sistema</th>
-                                        <th>Fecha Documento</th>
+                                        <th class="fechavencimiento">Fecha Documento</th>
                                         <th>Reclamo</th>
                                         <th>Estudio Juridico</th>
                                     </tr>
@@ -117,7 +125,7 @@
                                         <th>Opciones</th>
                                         <th>CUIL</th>
                                         <th>Fecha Sistema</th>
-                                        <th>Fecha Documento</th>
+                                        <th class="fechavencimiento">Fecha Documento</th>
                                         <th>Reclamo</th>
                                         <th>Estudio Juridico</th>
                                     </tr>
@@ -159,7 +167,7 @@
                                         <th>Fecha Sistema</th>
                                         <th>Fecha Documento</th>
                                         <th>TIPO</th>
-                                        <th>Fecha Audiciencia </th>
+                                        <th class="fechavencimiento">Fecha Audiciencia </th>
                                         <th>Hora Audiciencia</th>
                                         <th>Comentario</th>
                                     </tr>
@@ -201,7 +209,7 @@
                                         <th>Fecha Sistema</th>
                                         <th>Fecha Documento</th>
                                         <th>TIPO</th>
-                                        <th>Fecha Juicio </th>
+                                        <th class="fechavencimiento">Fecha Juicio </th>
                                         <th>Hora Juicio</th>
                                         <th>Comentario</th>
                                     </tr>
@@ -240,6 +248,7 @@
             });
 
             tablaCartaDocumento = $("#tablaCartaDocumento").DataTable({
+                "aaSorting": [],
                 ajax: {
                     url: 'https://ut.sotano.digital/utjuicios/DB/litigantesCDxCUIT/' + CUITparams + '',
                     dataSrc: "",
@@ -247,11 +256,11 @@
                     "serverSide": true,
                     async: true
                 },
-                "order": [4,'asc'],
+
                 "autoWidth": false,
-                columnDefs: [ {
-                        bSortable: false,
-                        targets: [ 1, 2, 5, 6]
+                columnDefs: [{
+                        orderable: false,
+                        targets: [0, 1, 2, 3, 4, 5, 6]
                     },
                     {
                         "width": "30px",
@@ -274,6 +283,14 @@
                         "targets": 4
                     }
                 ],
+                rowCallback: function(row, data) {
+                        $("td", row)
+                            .eq(4)
+                            .css({
+                                "background-color": advertencia(7,data["FECHADOC_order"])[0],
+                                'color': advertencia(7,data["FECHADOC_order"])[1]
+                            });
+                },
                 "columns": [{
                         data: "ID"
                     },
@@ -299,7 +316,7 @@
                         data: "FECHAING"
                     },
                     {
-                        data: "FECHADOC"
+                        data: "FECHADOC_order"
                     },
                     {
                         data: "RECLAMO"
@@ -308,18 +325,17 @@
                         data: "ESTUDIO"
                     }
                 ],
-                pageLength: 10,
+                pageLength: 100,
                 lengthMenu: [
-                    [10, 20, 50, -1],
-                    [10, 20, 50, 'Todos']
+                    [10, 20, 50, 100, -1],
+                    [10, 20, 50, 100, 'Todos']
                 ],
                 // "pagingType": "full_numbers",
                 "dom": "<'row'<'col-md-12 text-left'f>>" +
-                "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
-                "<'row'<'col-md-12'i>>" +
-                "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
-                buttons: [
-                    {
+                    "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
+                    "<'row'<'col-md-12'i>>" +
+                    "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
+                buttons: [{
                         extend: 'excel',
                         text: ' <i class="fas fa-file-excel  text-success align-middle"></i> Excel',
                         titleAttr: 'Descarge un XLS del filtrado realizado',
@@ -342,6 +358,7 @@
             });
 
             tablaContestaciones = $("#tablaContestaciones").DataTable({
+                "aaSorting": [],
                 ajax: {
                     url: 'https://ut.sotano.digital/utjuicios/DB/litigantesCOxCUIT/' + CUITparams + '',
                     dataSrc: "",
@@ -349,11 +366,10 @@
                     "serverSide": true,
                     async: true
                 },
-                "order": [4,'asc'],
                 "autoWidth": false,
-                columnDefs: [ {
-                        bSortable: false,
-                        targets: [ 1, 2, 5, 6]
+                columnDefs: [{
+                        orderable: false,
+                        targets: [0, 1, 2, 3, 4, 5, 6]
                     },
                     {
                         "width": "30px",
@@ -376,6 +392,14 @@
                         "targets": 4
                     }
                 ],
+                rowCallback: function(row, data) {
+                        $("td", row)
+                            .eq(4)
+                            .css({
+                                "background-color": advertencia(7,data["FECHADOC_order"])[0],
+                                'color': advertencia(7,data["FECHADOC_order"])[1]
+                            });
+                },
                 "columns": [{
                         data: "ID"
                     },
@@ -401,7 +425,7 @@
                         data: "FECHAING"
                     },
                     {
-                        data: "FECHADOC"
+                        data: "FECHADOC_order"
                     },
                     {
                         data: "RECLAMO"
@@ -410,18 +434,17 @@
                         data: "ESTUDIO"
                     }
                 ],
-                pageLength: 10,
+                pageLength: 100,
                 lengthMenu: [
-                    [10, 20, 50, -1],
-                    [10, 20, 50, 'Todos']
+                    [10, 20, 50, 100, -1],
+                    [10, 20, 50, 100, 'Todos']
                 ],
                 // "pagingType": "full_numbers",
                 "dom": "<'row'<'col-md-12 text-left'f>>" +
-                "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
-                "<'row'<'col-md-12'i>>" +
-                "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
-                buttons: [
-                    {
+                    "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
+                    "<'row'<'col-md-12'i>>" +
+                    "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
+                buttons: [{
                         extend: 'excel',
                         text: ' <i class="fas fa-file-excel  text-success align-middle"></i> Excel',
                         titleAttr: 'Descarge un XLS del filtrado realizado',
@@ -444,6 +467,7 @@
             });
 
             tablaAudiencias = $("#tablaAudiencias").DataTable({
+                "aaSorting": [],
                 ajax: {
                     url: 'https://ut.sotano.digital/utjuicios/DB/litigantesAUxCUIT/' + CUITparams + '',
                     dataSrc: "",
@@ -451,11 +475,11 @@
                     "serverSide": true,
                     async: true
                 },
-                "order": [6,'asc'],
+                // "order": [6, 'asc'],
                 "autoWidth": false,
-                columnDefs: [ {
-                        bSortable: false,
-                        targets: [0, 1, 2, 7, 8]
+                columnDefs: [{
+                        orderable: false,
+                        targets: [0, 1, 2, 3, 4, 5, 6, 7, 8]
                     },
                     {
                         "width": "30px",
@@ -486,6 +510,14 @@
                         "targets": 6
                     }
                 ],
+                rowCallback: function(row, data) {
+                        $("td", row)
+                            .eq(6)
+                            .css({
+                                "background-color": advertencia(7,data["FECHAAUDI_order"])[0],
+                                'color': advertencia(7,data["FECHAAUDI_order"])[1]
+                            });
+                },
                 "columns": [{
                         data: "ID"
                     },
@@ -517,7 +549,7 @@
                         data: "TIPO"
                     },
                     {
-                        data: "FECHAAUDI"
+                        data: "FECHAAUDI_order"
                     },
                     {
                         data: "HORAAUDI"
@@ -526,18 +558,17 @@
                         data: "COMENTARIO"
                     }
                 ],
-                pageLength: 10,
+                pageLength: 100,
                 lengthMenu: [
-                    [10, 20, 50, -1],
-                    [10, 20, 50, 'Todos']
+                    [10, 20, 50, 100, -1],
+                    [10, 20, 50, 100, 'Todos']
                 ],
                 // "pagingType": "full_numbers",
                 "dom": "<'row'<'col-md-12 text-left'f>>" +
-                "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
-                "<'row'<'col-md-12'i>>" +
-                "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
-                buttons: [
-                    {
+                    "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
+                    "<'row'<'col-md-12'i>>" +
+                    "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
+                buttons: [{
                         extend: 'excel',
                         text: ' <i class="fas fa-file-excel  text-success align-middle"></i> Excel',
                         titleAttr: 'Descarge un XLS del filtrado realizado',
@@ -560,6 +591,7 @@
             });
 
             tablaJuicios = $("#tablaJuicios").DataTable({
+                "aaSorting": [],
                 ajax: {
                     url: 'https://ut.sotano.digital/utjuicios/DB/litigantesJUxCUIT/' + CUITparams + '',
                     dataSrc: "",
@@ -567,12 +599,11 @@
                     "serverSide": true,
                     async: true
                 },
+
                 "autoWidth": false,
-                "order": [6,'asc'],
-                "autoWidth": false,
-                columnDefs: [ {
-                        bSortable: false,
-                        targets: [0, 1, 2, 5, 7, 8]
+                columnDefs: [{
+                        orderable: false,
+                        targets: [0, 1, 2, 3, 4, 5, 6, 7, 8]
                     },
                     {
                         "width": "30px",
@@ -603,6 +634,14 @@
                         "targets": 6
                     }
                 ],
+                rowCallback: function(row, data) {
+                        $("td", row)
+                            .eq(6)
+                            .css({
+                                "background-color": advertencia(7,data["FECHAJUI_order"])[0],
+                                'color': advertencia(7,data["FECHAJUI_order"])[1]
+                            });
+                },
                 "columns": [{
                         data: "ID"
                     },
@@ -634,7 +673,7 @@
                         data: "TIPO"
                     },
                     {
-                        data: "FECHAJUI"
+                        data: "FECHAJUI_order"
                     },
                     {
                         data: "HORAJUI"
@@ -643,18 +682,17 @@
                         data: "COMENTARIO"
                     }
                 ],
-                pageLength: 10,
+                pageLength: 100,
                 lengthMenu: [
-                    [10, 20, 50, -1],
-                    [10, 20, 50, 'Todos']
+                    [10, 20, 50, 100, -1],
+                    [10, 20, 50, 100, 'Todos']
                 ],
                 // "pagingType": "full_numbers",
                 "dom": "<'row'<'col-md-12 text-left'f>>" +
-                "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
-                "<'row'<'col-md-12'i>>" +
-                "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
-                buttons: [
-                    {
+                    "<'row'<'col-md-12't>><'row'<'col-md-12'p>>" +
+                    "<'row'<'col-md-12'i>>" +
+                    "<'row'<'col-md-6 text-left'l><'col-md-6 text-right'B>>",
+                buttons: [{
                         extend: 'excel',
                         text: ' <i class="fas fa-file-excel  text-success align-middle"></i> Excel',
                         titleAttr: 'Descarge un XLS del filtrado realizado',
@@ -834,7 +872,7 @@
             });
         })
 
-         //  BOTONES DATATABLE Juicios
+        //  BOTONES DATATABLE Juicios
         // VER Registro de Juicios
         $(document).on("click", ".btn_JU_VER", function() {
             console.log('Lanzar Modal READ');
